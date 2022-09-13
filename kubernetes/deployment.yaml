@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjs-gato-kbns-gcp
+spec:
+  selector:
+    matchLabels:
+      app: nestjs-gato-kbns-gcp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nestjs-gato-kbns-gcp
+    spec:
+      containers:
+        - name: nestjs-gato-kbns-gcp
+          image: hectorvmlopez/nestjs-gato-kbns-gcp
+          resources:
+            requests:
+              memory: '32Mi'
+              cpu: '100m'
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
+          ports:
+            - containerPort: 3000
